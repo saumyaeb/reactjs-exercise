@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = ({ onSubmit }) => {
 
-   const history = useHistory();
+   const navigate = useNavigate();
 
    // add useState to manage FormData
    const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ const SignUpForm = ({ onSubmit }) => {
     homeTown: ""
    })
 
-    // handle onChange event and get the updated value
+   // handle onChange event and get the updated value
    function handleChange(event) {
     const {name, value} = event.target
     setFormData(prevFormData => ({
@@ -22,27 +22,24 @@ const SignUpForm = ({ onSubmit }) => {
     }))
    }
 
-   // handle submit event and pass formData to Confirmation component
+   // handle submit event and pass formData to Confirmation component and add formdata to previous entries
    // clear formData on submit 
-   // navigate to Confirmation component using UseHistory Hook
    function handleSubmit(event) {
      event.preventDefault();
-
      onSubmit(formData);
-     
+     navigate('/confirmation', { state: formData });
      setFormData({
        name: "",
        age: "",
        title: "",
        homeTown: ""
       })
- 
-     history.push("/confirmation");
     }
 
 return(
   <>
   <div className="form-container">
+  <h1>Data Entry Form</h1>
   <form className="form" onSubmit={handleSubmit}>
     <input  className="form--input" type="text" placeholder="Name" name='name' value={formData.name} onChange={handleChange}  required />
     <input  className="form--input" type="number" placeholder="Age" name='age'value={formData.age} onChange={handleChange}  />
