@@ -7,5 +7,6 @@ A sample ReactJS application accepts user inputs with dynamic validation enabled
 2) Install [`git`](https://git-scm.com/download/win) to clone this repository to run application locally
 3) Clone this repository using the command `git clone git@github.com:saumyaeb/reactjs-exercise.git` in commandline or using VSCode/IntelliJ
 4) Change the directory using the command `cd reactjs-exercise` to run application locally
-5) Run application locally using the command `npm start`in commandline or run option in VSCode/IntelliJ
-
+5) Build and run application locally using the command `npm start` in commandline or run option in VSCode/IntelliJ
+6) The application successfully started locally and accessible using the url `http://localhost:3000/`
+7) Press `Ctrl + C` to stop the application or select stop/kill option in VSCode/IntelliJ
