@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import SignUpForm from './components/SignUpForm';
+import Confirmation from './components/Confirmation';
+
+const App = () => {
+  const [formEntries, setFormEntries] = useState([]);
+
+  const handleFormSubmit = (newformData) => {
+    setFormEntries([...formEntries, newformData]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+       <Route exact path="/"  render={(props) => <SignUpForm {...props} onSubmit={handleFormSubmit} />} /> 
+       <Route path="/confirmation" render={(props) => <Confirmation {...props} formEntries={formEntries} />} />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
+
