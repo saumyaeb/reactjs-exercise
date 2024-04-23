@@ -7,17 +7,15 @@ import Confirmation from './components/Confirmation';
 
 const App = () => {
   const [formEntries, setFormEntries] = useState([]);
-
+  // add the form data to previous entries
   const handleFormSubmit = (newformData) => {
     setFormEntries([...formEntries, newformData]);
   };
 
   return (
     <Router>
-      <div>
        <Route exact path="/"  render={(props) => <SignUpForm {...props} onSubmit={handleFormSubmit} />} /> 
        <Route path="/confirmation" render={(props) => <Confirmation {...props} formEntries={formEntries} />} />
-      </div>
     </Router>
   );
 };

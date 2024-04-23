@@ -5,6 +5,7 @@ const SignUpForm = ({ onSubmit }) => {
 
    const history = useHistory();
 
+   // add useState to manage FormData
    const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -12,7 +13,7 @@ const SignUpForm = ({ onSubmit }) => {
     homeTown: ""
    })
 
-
+    // handle onChange event and get the updated value
    function handleChange(event) {
     const {name, value} = event.target
     setFormData(prevFormData => ({
@@ -21,11 +22,14 @@ const SignUpForm = ({ onSubmit }) => {
     }))
    }
 
+   // handle submit event and pass formData to Confirmation component
+   // clear formData on submit 
+   // navigate to Confirmation component using UseHistory Hook
    function handleSubmit(event) {
      event.preventDefault();
 
      onSubmit(formData);
-
+     
      setFormData({
        name: "",
        age: "",
